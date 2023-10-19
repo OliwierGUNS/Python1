@@ -1,0 +1,22 @@
+# Exam grade program
+
+# -------------------------
+# Subprograms
+# -------------------------
+
+def compound():
+  year = 0
+  balance = int(input("Enter balance: "))
+  rate = int(input("Enter interest % rate: "))
+  target = int(input("Enter the target balance: "))
+  trueRate = (rate / 100) + 1
+  while balance < target:
+    balance = balance * trueRate
+    balance = int(balance)
+    year = year + 1
+    print("Year",year,": Balance £",balance)
+
+# -------------------------
+# Main program
+# -------------------------
+compound()
