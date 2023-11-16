@@ -1,0 +1,82 @@
+# Fox, chicken, grain program
+
+#Sub-programs
+
+def output():
+  out = ""
+  out2 = ""
+  if fox == 1:
+    out = out + "Fox\n"
+  else:
+    out2 = out2 + "Fox\n"
+  if chicken == 1:
+    out = out + "Chicken\n"
+  else:
+    out2 = out2 + "Chicken\n"
+  if grain == 1:
+    out = out + "Grain\n"
+  else:
+    out2 = out2 + "Grain\n"
+  if farmer == 1:
+    out = out + "Farmer\n"
+  else:
+    out2 = out2 + "Farmer\n"
+  print("-------\nThis side of the river:\n"+out2)
+  print("\n \nThe other side of the river:\n"+out+"-------")
+  
+def wrong_move():
+  if farmer == 1 and fox == 0 and chicken == 0 and grain == 1:
+    print("\nThe fox ate the chicken.")
+    return True
+  elif farmer == 0 and fox == 1 and chicken == 1 and grain == 0:
+    print("\nThe fox ate the chicken.")
+    return True
+  elif farmer == 1 and grain == 0 and chicken == 0 and fox == 1:
+    print("\nThe chicken ate the grain.")
+    return True
+  elif farmer == 0 and grain == 1 and chicken == 1 and fox == 0:
+    print("\nThe chicken ate the grain.")
+    return True
+  else:
+    return False
+
+def puzzle_solved():
+  if farmer == 1 and fox == 1 and chicken == 1 and grain == 1:
+    print("You solved the puzzle!")
+    return True
+  else:
+    return False
+#Main Program
+print("A fox, chicken and a bag of grain wait by the side of a river.")
+fox = 0
+chicken = 0 
+grain = 0
+farmer = 0
+while puzzle_solved() == False and wrong_move() == False:
+  choice = input("Which item will you take in your rowboat to the other side?\nfox, chicken, grain or farmer? \nChoose:")
+  wrong_move()
+  if choice == "farmer" and farmer == 0:
+    farmer = 1
+  elif choice == "farmer" and farmer == 1:
+    farmer = 0
+  elif choice == "fox" and fox == 0 and farmer == 0:
+    farmer = 1
+    fox = 1
+  elif choice == "fox" and fox == 1 and farmer == 1:
+    farmer = 0
+    fox = 0
+  elif choice == "chicken" and chicken == 0 and farmer == 0:
+    farmer = 1
+    chicken = 1
+  elif choice == "chicken" and chicken == 1 and farmer == 1:
+    farmer = 0
+    chicken = 0
+  elif choice == "grain" and grain == 0 and farmer == 0:
+    farmer = 1
+    grain = 1
+  elif choice == "grain" and grain == 1 and farmer == 1:
+    farmer = 0
+    grain = 0
+  output()
+
+  
