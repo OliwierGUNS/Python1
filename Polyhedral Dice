@@ -1,0 +1,25 @@
+# Polyhedral dice program
+
+# -------------------------
+# Import libraries
+# -------------------------
+import random
+
+
+# -------------------------
+# Subprograms
+# -------------------------
+def roll_dice():
+    return random.randint(1, dice)
+
+
+# -------------------------
+# Main program
+# -------------------------
+dice = int(input("Roll a D"))
+random.seed()
+number = roll_dice()
+if number == 8 or number == 11:
+  print("You rolled an", number)
+else:
+  print("You rolled a", number)
