@@ -1,0 +1,22 @@
+# subprograms
+
+def bubble(array):
+    length = len(array)-1
+    solved = False
+    while solved == False:
+        solved = True
+        for x in range(0,length):
+            if array[x] > array[x + 1]:
+                current = array[x]
+                array[x] = array[x + 1]
+                array[x + 1] = current
+                solved = False
+            print(array)
+    print(array)
+
+
+# main program
+
+array = [76,56,56,78,23,12,43,111]
+input("Press Enter to sort")
+bubble(array)
