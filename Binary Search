@@ -1,0 +1,24 @@
+#subprograms
+
+def binary(array, item):
+    found = False
+    last = len(array) - 1
+    first = 0
+    while not found and first <= last:
+        midpoint = (first + last) // 2
+        if array[midpoint] == item:
+            found = True
+        elif array[midpoint] < item:
+            first = midpoint + 1
+        else:
+            last = midpoint - 1
+    if found:
+        print("Found at",midpoint)
+    else:
+        print("Not found")
+    return found
+
+#main program
+array = ["Asia","Europe","North America"]
+item = input("Enter a region\n")
+binary(array,item)
