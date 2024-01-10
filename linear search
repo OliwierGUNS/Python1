@@ -1,0 +1,19 @@
+def linear(array, item):
+    found = False
+    index = 0
+    length = len(array)
+    while not found and index < length:
+        if item == array[index]:
+            found = True
+        index = index + 1
+    if found:
+        print("Found at",index)
+    else:
+        print("Not found")
+    return found
+
+
+#main program
+list1 = [1, 4, 8, 11, 15, 18, 20]
+num1 = int(input("Enter number:\n"))
+linear(list1, num1)
