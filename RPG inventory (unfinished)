@@ -7,8 +7,9 @@ def craft():
     item = input("What item are you crafting? : ")
     match item:
       case "charm":
-        if (["gem","leather"]) in inventory:
-          inventory.remove(["gem","leather"])
+        if ("gem") in inventory and ("leather") in inventory:
+          inventory.remove("gem")
+          inventory.remove("leather")
           inventory.append("Charm")
           print("Charm has been crafted.")
         else:
@@ -65,6 +66,6 @@ def choose_action():
 # -------------------------
 # Main program
 # -------------------------
-inventory = ["sword", "shield","leather","gem"]
+inventory = ["sword", "shield", "leather", "gem"]
 while True:
     choose_action()
