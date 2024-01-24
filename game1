@@ -1,0 +1,106 @@
+import pygame
+pygame.init()
+
+# list of the grid spaces
+grid = [
+  [1,  0,  0,  0,  0,  0,  0,  0],
+  [0,  0,  0,  0,  0,  0,  0,  0],
+  [0,  0,  0,  2,  0,  0,  0,  0],
+  [0,  0,  0,  0,  2,  0,  0,  0],
+  [0,  0,  0,  2,  0,  0,  0,  0],
+  [0,  0,  0,  0,  2,  0,  0,  0],
+  [0,  0,  0,  2,  0,  0,  0,  0],
+  [0,  0,  0,  0,  0,  0,  0,  0]
+]
+
+# the character square and movement speed
+x = 0
+y = 0
+width = 26
+height = 26
+vel = 1
+# character x and y axis
+cx = 0
+cy = 0
+# the window size
+BLACK = (0, 0, 0)
+WHITE = (200, 200, 200)
+WINDOW_HEIGHT = 400
+WINDOW_WIDTH = 400
+# images
+bg = pygame.image.load('backg.jpg')
+rock = pygame.image.load('rock2.png')
+
+#fucntion "obstacle" will find the obstacle in the grid and display them
+def obstacle():
+  for i in range(8):
+    for j in range(8):
+      if grid[i][j] == 2:
+        SCREEN.blit(rock, (j * 50, i * 50))
+
+# function "main" will update the display. 
+def main(): 
+    global SCREEN
+    SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+    SCREEN.fill(BLACK)
+    SCREEN.blit(bg, (0,0))
+    obstacle()
+#    drawGrid()
+    pygame.draw.rect(SCREEN, (255,0,0), (cx + 12.5, cy + 12.5, width, height))  
+    for event in pygame.event.get():
+      if event.type == pygame.QUIT:
+          pygame.quit()
+          sys.exit()
+    pygame.display.update()
+# function "drawGrid" will draw the grid on the screen
+#def drawGrid():
+#    blockSize = 50 # Set the size of the grid block
+#    for x in range(0, WINDOW_WIDTH, blockSize):
+#        for y in range(0, WINDOW_HEIGHT, blockSize):
+#          rect = pygame.Rect(x, y, blockSize, blockSize)
+#          pygame.draw.rect(SCREEN, WHITE, rect, 1)
+          
+
+
+
+
+# main program
+while True:
+  pygame.time.delay(100)
+  keys = pygame.key.get_pressed()
+
+  # movement
+  if keys[pygame.K_LEFT] and cx >= 1:
+    grid[y][x] = 0
+    x -= vel
+    grid[y][x] = 1
+    cx = x * 50
+    cy = y * 50
+    pygame.time.delay(300)
+
+  if keys[pygame.K_RIGHT] and cx <= 300:
+    grid[y][x] = 0
+    x += vel
+    grid[y][x] = 1
+    cx = x * 50
+    cy = y * 50
+    pygame.time.delay(300)
+
+  if keys[pygame.K_UP] and cy >= 1:
+    grid[y][x] = 0
+    y -= vel
+    grid[y][x] = 1
+    cx = x * 50
+    cy = y * 50
+    pygame.time.delay(300)
+
+  if keys[pygame.K_DOWN] and cy <= 300:
+    grid[y][x] = 0
+    y += vel
+    grid[y][x] = 1
+    cx = x * 50
+    cy = y * 50
+    pygame.time.delay(300)
+
+  print(grid)
+  main()
